@@ -8,11 +8,11 @@ pipeline {
                      } }
             stage('build'){
                steps{ 
-                  mvn install
+                 sh 'mvn install'
                      } }
             stage('deploy'){
                steps{
-                  cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps
+                 sh  'cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps'
                      } }
                   }
         }             
