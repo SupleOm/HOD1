@@ -8,7 +8,7 @@ parameters {
       stages{
             stage('Checkout') {
                steps {
-                      checkout scm
+                      git 'https://github.com/SupleOm/HOD1.git'
                      } }
             stage('build'){
                steps{ 
