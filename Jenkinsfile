@@ -1,12 +1,11 @@
 pipeline {
        agent any
-       
-       triggers {
-                   pollSCM '* * * * * '
-}
 
+parameters {
+  choice choices: ['DEV', 'QA', 'UAT'], name: 'ENVIRONMENT'
+}
                  
-       stages{
+      stages{
             stage('Checkout') {
                steps {
                       checkout scm
@@ -17,7 +16,16 @@ pipeline {
                      } }
             stage('deploy'){
                steps{
-                 sh  'cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps'
-                     } }
+                 script{
+if [ env.ENVIRONMENT = "QA" ];then
+	cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps
+elif  [ env.ENVIRONMENT = "UAT" ];then
+         cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps
+echo "deployment has been done!"
+fi
+
+}
                   }
-        }             
+        }
+}
+}             
