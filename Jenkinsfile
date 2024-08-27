@@ -16,16 +16,15 @@ parameters {
                      } }
             stage('deploy'){
                steps{
-                 script{
-if [ env.ENVIRONMENT = "QA" ];then
-	cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps
-elif  [ env.ENVIRONMENT = "UAT" ];then
-         cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps
-echo "deployment has been done!"
-fi
-
-}
-                  }
-        }
-}
-}             
+                script {
+			 if ( env.ENVIRONMENT == 'QA' ){
+        	sh 'cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps'
+        	echo "deployment has been COMPLETED on QA!"
+			 }
+			else ( env.ENVIRONMENT == 'UAT' ){
+    		sh 'cp target/HOD1.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
+    		echo "deployment has been done on UAT!"
+			}
+			}}}	
+}}
+                              
