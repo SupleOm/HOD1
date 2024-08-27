@@ -21,7 +21,7 @@ parameters {
         	sh 'cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps'
         	echo "deployment has been COMPLETED on QA!"
 			 }
-			elif ( env.ENVIRONMENT == 'UAT' ){
+			else if ( env.ENVIRONMENT == 'UAT' ){
     		sh 'cp target/HOD1.war /home/omsuple/Devopstool/apache-tomcat-9.0.93/webapps'
     		echo "deployment has been done on UAT!"
 			}
