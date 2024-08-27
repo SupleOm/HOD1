@@ -2,10 +2,9 @@ pipeline {
        agent any
 
 parameters {
-  string defaultValue: 'QA', description: '''DEV
-QA
-UAT''', name: 'ENVIRONMENT'
+  string defaultValue: 'QA', name: 'ENVIRONMENT'
 }
+
 
                  
       stages{
